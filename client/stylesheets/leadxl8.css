@@ -1,0 +1,10 @@
+/* CSS declarations go here */
+
+.header { background-color: lightgray; margin-left: 0; width:1300px; float:left; font-size: 10px; }
+.lpanel { background-color: snow; margin-left: 0px; margin-top: 40px;width:400px; height:800px; float:left; font-size: 10px; }
+.frame { background-color:  ghostwhite; margin-left: 400;  margin-top: 40px;width:500px; height:800px; float:left; font-size: 10px; }
+.rpanel { background-color: snow; margin-left: 700; margin-top: 40px;width:400px; height:800px; float:left;font-size: 10px; }
+
+.access_denied {
+        margin: 100px auto;
+}

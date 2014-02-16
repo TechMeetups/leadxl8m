@@ -1,0 +1,89 @@
+<template name="campaign">
+	
+	{{> header }}
+	
+	{{#if currentUser }}
+  		<h4>Campaign</h4>
+			{{> campaign_list }}
+	{{else}}
+        {{> access_denied }}
+    {{/if}}	
+</template>
+
+<template name="campaign_list">
+	<table class="table table-bordered table-striped table-hover">
+	 <thead>
+	 	<tr>
+	 		<th>Name</th>
+	 		<th>Start</th>
+	 		<th>End</th>
+	 		<th>Action</th>
+	 	</tr>	
+	 </thead>	
+	 <tbody>
+			{{#each campaigns}}
+				{{> campaign_item}}	
+			{{/each}}	
+			{{> add_campaign }}
+	 </tbody>
+	</table>
+</template>
+
+<template name="campaign_item">
+	<tr class="campaignRow">
+		
+			{{#if isEditing}}
+				{{> campaignForm }}
+			<!--
+				<form name="editcampaign">
+					<input type="text" class="campaignname" value="{{name}}">
+					{{> submit-button }}
+					{{> cancel-button }}
+				</form>			
+			-->	
+			{{else}}
+				<td>{{ name }}</td>
+				<td>{{ sdate }}</td>
+				<td>{{ edate }}</td>
+
+				<td>	
+					{{> edit-button }}
+					{{> delete-button }}
+				</td>	
+			{{/if}}	
+	</tr>	
+</template>	
+
+<template name="add_campaign">
+	<tr>
+		
+		<td><input type="text" name="name" value="" id="name"></td>
+		<td><input type="text" name="sdate" value="" id="sdate"></td>
+		<td><input type="text" name="edate" value="" id="edate"></td>
+		
+		<td>	
+			<button type="submit" class="btn btn-mini btn-link add">
+			<i class="icon-plus"></i>	
+			</button>
+		</td>	
+
+	</tr>	
+</template>
+
+<template name="campaignForm">
+
+		<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Modal header</h3>
+		</div>
+		<div class="modal-body">
+		<p>One fine body…</p>
+		</div>
+		<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		<button class="btn btn-primary">Save changes</button>
+		</div>
+		</div>
+
+</template>

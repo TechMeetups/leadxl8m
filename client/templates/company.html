@@ -1,0 +1,83 @@
+<template name="company">
+
+	{{> header}}
+
+	{{#if currentUser }}
+  		<h4>Company</h4>
+		{{> company_list }}
+	{{else}}
+        {{> access_denied }}
+    {{/if}}	
+</template>
+
+<!--  Company -->
+
+<template name="company_list">
+	
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="row">
+				<div class="span12">
+					<table class="table table-bordered table-striped table-hover">
+					 	<thead>
+					 		<tr>
+					 			<th>Company</th>
+					 			<th>City</th>
+					 			<th>Twitter</th>
+					 			<th>Facebook</th>
+					 			<th>Phone</th>
+					 			<th>Action</th>
+					 		</tr>	
+					 	</thead>	
+
+					 	<tbody>	
+							{{#each company}}
+								{{> company_item}}	
+							{{/each}}	
+							{{> add_company }}
+						</tbody>
+					</table>	
+				</div>	
+			</div>
+		</div>
+	</div>			
+</template>
+
+<template name="company_item">
+	<tr class="companyRow">
+
+		{{#if isEditing}}
+			<form name="editcompany">
+				<input type="text" class="companyname" value="{{name}}">
+				{{> submit-button }}
+				{{> cancel-button }}
+			</form>
+		{{else}}
+			<td>{{ name }}</td>
+			<td>{{ city }}</td>
+			<td>{{ twitter }}</td>
+			<td>{{ facebook }}</td>
+			<td>{{ phone }}</td>
+			<td>
+				{{> edit-button }}
+				{{> delete-button }}
+			</td>
+		{{/if}}	
+					
+	</tr>	
+</template>	
+
+<template name="add_company">
+	<tr>
+		<td><input type="text" name="name" value="" id="name"></td>
+		<td><input type="text" name="city" value="" id="city"></td>
+		<td><input type="text" name="twitter" value="" id="twitter"></td>
+		<td><input type="text" name="facebook" value="" id="facebook"></td>
+		<td><input type="text" name="phone" value="" id="phone"></td>	
+		<td>	
+			<button type="submit" class="btn btn-mini btn-link add">
+			<i class="icon-plus"></i>	
+			</button>
+		</td>	
+	</tr>	
+</template>

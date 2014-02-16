@@ -1,0 +1,92 @@
+<template name="activity">
+	{{> header}}
+
+	{{#if currentUser }}
+  		<h4>Activity</h4>
+			{{> activity_list }}
+			
+	{{else}}
+        {{> access_denied }}
+    {{/if}}	
+</template>
+
+<!--  Activity -->
+
+<template name="activity_list">
+	 <table class="table table-bordered table-striped table-hover">
+		 <thead>
+		 	<tr>
+		 		<th>Date</th>
+		 		<th>Type</th>
+		 		<th>Company</th>
+		 		<th>Message</th>
+		 		<th>Result</th>
+		 		<th>Action</th>
+		 	</tr>	
+		 </thead>	
+		 <tbody>
+				{{#each activity}}
+					{{> activity_item}}	
+				{{/each}}	
+				{{> add_activity }}
+		</tbody>	
+	</table>
+</template>
+
+<template name="activity_item">
+
+
+	<tr class="activityRow">
+		
+			{{#if isEditing}}
+				<form name="editactivity">
+					<input type="text" class="activityname" value="{{name}}">
+					{{> submit-button }}
+					{{> cancel-button }}
+				</form>			
+			{{else}}
+				<td>{{ date }}</td>
+				<td>{{ type }}</td>
+				<td>{{ company }}</td>
+				<td>{{ message }}</td>
+				<td>{{ result }}</td>		
+				<td>	
+					{{> edit-button }}
+					{{> delete-button }}
+				</td>	
+			{{/if}}	
+	</tr>	
+
+</template>	
+
+<template name="add_activity">
+	<tr>
+		
+		<td><input type="date" name="date" value="" id="date"></td>
+		<td>
+			<input type="radio" name="type" value="Tweet" id="type"> Tweet<br>
+			<input type="radio" name="type" value="Call" id="type"> Call<br>
+			<input type="radio" name="type" value="Email" id="type"> Email<br>
+			<input type="radio" name="type" value="FB Poke" id="type"> FB Poke<br>
+		</td>
+
+		<td><input type="text" name="company" value="" id="company" data-provide="typeahead"></td>
+	
+		<td><textarea cols="20" rows="4" name="message" value="" id="message"></textarea></td>
+		<td><textarea cols="20" rows="4" name="result" value="" id="result"></textarea></td>
+		
+
+
+		<td>	
+			<button class="btn btn-mini btn-link fbaction"> f</button> 		
+			<button class="btn btn-mini btn-link tweetaction"> t</button> 
+			<button class="btn btn-mini btn-link callaction">
+			<i class="icon-headphones"></i>	
+			</button></br>				
+
+			<button type="submit" class="btn btn-mini btn-link add">
+			<i class="icon-plus"></i>	
+			</button>
+		</td>	
+	</tr>	
+</template>

@@ -1,0 +1,79 @@
+<head>
+  <script type="text/javascript" src="script.js"></script>
+  <title>LeadXL8</title>
+</head>
+
+<body>	
+ 	{{renderPage}}
+</body>
+
+<template name="header">
+    <div class="navbar navbar-fixed-top navbar-inverse">
+    	<div class="navbar-inner">
+    		<a class="brand" href="/">LeadXL8</a>
+    		<ul class="nav">
+    			<li><a href="/campaign">Campaign</a></li>
+    			<li><a href="/company">Company</a></li>
+    			<li><a href="/person">Person</a></li>
+    			<li><a href="/activity">Activity</a></li>
+                <li><a href="/calendar">Calendar</a></li>
+    		</ul>	
+            	<div class="text-center">
+                	<small>
+                 		{{loginButtons}}
+                	</small>
+
+                </div>
+              
+        </div>
+    </div>
+</template>
+
+<template name="access_denied">
+        <div class="row-fluid">
+                <div class="span12">
+                        
+                <h2 class="text-center access_denied">
+                                Welcome to LeadXL8! <br>
+                                <small>
+                                    Sign in or register to proceed.
+                                </small>
+                        </h2> 
+                </div>
+        </div>
+</template>
+
+
+
+<template name="add-button">
+	<button type="submit" class="btn btn-mini btn-link add">
+		<i class="icon-plus"></i>	
+	</button>
+</template>
+
+<template name="edit-button">
+	<button class="btn btn-mini btn-link edit">
+		<i class="icon-edit"></i>	
+	</button>
+</template>
+
+<template name="delete-button">
+	<button type="submit" class="btn btn-mini btn-link delete">
+		<i class="icon-trash"></i>	
+	</button>
+</template>
+
+<template name="cancel-button">
+	<button class="btn btn-mini btn-link cancel">
+		<i class="icon-remove"></i>	
+	</button>
+</template>
+
+<template name="submit-button">
+	<button type="submit" class="btn btn-mini btn-link">
+		<i class="icon-ok"></i>	
+	</button>
+</template>
+
+
+

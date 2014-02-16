@@ -1,0 +1,91 @@
+<template name="person">
+
+	{{> header}}
+
+  	{{#if currentUser }}
+  		<h4>Person</h4>
+			{{> person_list }}
+	{{else}}
+        {{> access_denied }}
+    {{/if}}	
+		
+	
+</template>
+
+<!--  Person -->
+
+<template name="person_list">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="row">
+				<div class="span12">
+					<table class="table table-bordered table-striped table-hover">
+					 <thead>
+					 	<tr>
+					 		<th>Name</th>
+					 		<th>Email</th>
+					 		<th>Twitter</th>
+					 		<th>Facebook</th>
+					 		<th>Phone</th>
+					 		<th>Action</th>
+					 	</tr>	
+					 </thead>	
+					 <tbody>
+							{{#each person}}
+								{{> person_item}}	
+							{{/each}}	
+							{{> add_person }}
+					 </tbody>
+					</table>
+				</div>	
+			</div>
+		</div>
+	</div>		
+</template>
+
+<template name="person_item">
+	<tr class="personRow">
+		{{#if isEditing}}
+			<form name="editperson">
+				<input type="text" class="personname" value="{{name}}">
+				{{> submit-button }}
+				{{> cancel-button }}
+			</form>
+		{{else}}
+
+			<td>{{ name }}</td>
+			<td>{{ email }}</td>
+			<td>{{ twitter }}</td>
+			<td>{{ facebook }}</td>
+			<td>{{ phone }}</td>
+
+			<td>	
+				{{> edit-button }}
+				{{> delete-button }}
+			</td>	
+
+		{{/if}}	
+
+		
+	</tr>		
+</template>	
+
+<template name="add_person">
+	</tr>
+		<td><input type="text" name="name" value="" id="name"></td>
+		<td><input type="text" name="email" value="" id="email"></td>
+		<td><input type="text" name="twitter" value="" id="twitter"></td>
+		<td><input type="text" name="facebook" value="" id="facebook"></td>
+		<td><input type="text" name="phone" value="" id="phone"></td>	
+		<td>	
+			<button type="submit" class="btn btn-mini btn-link add">
+			<i class="icon-plus"></i>	
+			</button>
+		</td>	
+		
+		<button type="submit" class="btn btn-mini btn-link add">
+			<i class="icon-plus"></i>	
+		</button>
+
+	</tr>	
+</template>
